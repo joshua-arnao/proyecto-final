@@ -5,11 +5,13 @@ import {
     Redirect,
 } from "react-router-dom";
   
+import { Header } from "./components/header/header";
+import { Main } from "./components/main/main";
+
 import { PageLogin } from "./pages/login/login";
 import { PageCourses } from "./pages/courses/courses";
 import { PageStore } from "./pages/store/store";
 import { PageUser } from "./pages/user/user";
-import { PageNotFound } from "./pages/not-found/not-found";
 
 /* 
 COMPONENTES WRAPPER
@@ -32,9 +34,6 @@ export function App() {
                         </Route>
                         <Route path="/login">
                             <PageLogin />
-                        </Route>
-                        <Route path="*">
-                            <PageNotFound />
                         </Route>
                     </Switch>
                 </Main>
