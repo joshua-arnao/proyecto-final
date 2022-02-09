@@ -22,6 +22,7 @@ import { PageLogin } from "./pages/login/login";
 import { PageCourses } from "./pages/courses/courses";
 import { PageStore } from "./pages/store/store";
 import { PageUser } from "./pages/user/user";
+import { Link } from "react-router-dom";
 import "antd/dist/antd.css";
 import "./assets/style/main.scss";
 
@@ -53,13 +54,13 @@ export function App() {
               >
                 <Menu theme="dark" mode="inline" defaultSelectedKeys={["1"]}>
                   <Menu.Item key="1" icon={<ReadOutlined />}>
-                    Mis cursos
+                    <Link to="/courses">Mis cursos</Link>
                   </Menu.Item>
                   <Menu.Item key="2" icon={<AppstoreAddOutlined />}>
-                    Libreria
+                    <Link to="/store">Libreria</Link>
                   </Menu.Item>
                   <Menu.Item key="3" icon={<UserOutlined />}>
-                    Mi perfil
+                    <Link to="/user">Mi perfil</Link>
                   </Menu.Item>
                 </Menu>
                 {/* <Menu theme="dark" mode="inline" defaultSelectedKeys={["1"]}>
