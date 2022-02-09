@@ -4,9 +4,15 @@ import {
   MailOutlined,
   SettingOutlined,
 } from "@ant-design/icons";
+import { Redirect } from "react-router";
 const { SubMenu } = Menu;
 
-export function PageCourses() {
+export function PageCourses(autorizado) {
+    if (!autorizado == true) {
+        <Redirect to="/login"/>
+    }
+
+
     return (
         <div className="flex">
             <div className="p-4">CONTENIDO</div>

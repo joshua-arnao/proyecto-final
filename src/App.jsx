@@ -41,9 +41,12 @@ export function App() {
     });
   };
 
+  const [Autorizado,SetAutorizado] = useState(false);
+
   return (
     <Router>
       <div className="wrapper">
+      <Switch>
         <Main>
           <Layout style={{ minHeight: "100vh" }}>
             <Sider trigger={null} collapsible collapsed={useState.collapsed}>
@@ -54,13 +57,13 @@ export function App() {
               >
                 <Menu theme="dark" mode="inline" defaultSelectedKeys={["1"]}>
                   <Menu.Item key="1" icon={<ReadOutlined />}>
-                    <Link to="/courses">Mis cursos</Link>
+                    <Link to="/courses" autorizado={Autorizado} >Mis cursos</Link>
                   </Menu.Item>
                   <Menu.Item key="2" icon={<AppstoreAddOutlined />}>
-                    <Link to="/store">Libreria</Link>
+                    <Link to="/store" autorizado={Autorizado} >Libreria</Link>
                   </Menu.Item>
                   <Menu.Item key="3" icon={<UserOutlined />}>
-                    <Link to="/user">Mi perfil</Link>
+                    <Link to="/user" autorizado={Autorizado} >Mi perfil</Link>
                   </Menu.Item>
                 </Menu>
                 {/* <Menu theme="dark" mode="inline" defaultSelectedKeys={["1"]}>
@@ -89,24 +92,21 @@ export function App() {
                   minHeight: 280,
                 }}
               >
-                Step/bar
-
-                card 
+                Step/bar card
                 <div>
-                  <Switch>
+                    <Route path="/login">
+                      <PageLogin SetAutorizado={SetAutorizado}/>
+                    </Route>
                     <Route path="/courses">
-                      <PageCourses />
+                      <PageCourses autorizado={Autorizado}/>
                     </Route>
                     <Route path="/store">
-                      <PageStore />
+                      <PageStore autorizado={Autorizado}/>
                     </Route>
                     <Route path="/user">
-                      <PageUser />
+                      <PageUser autorizado={Autorizado}/>
                     </Route>
-                    <Route path="/login">
-                      <PageLogin />
-                    </Route>
-                  </Switch>
+                    <Redirect from="/" to="/login"></Redirect>
                 </div>
               </Content>
             </Layout>
@@ -149,6 +149,7 @@ export function App() {
             </div>
           </div> */}
         </Main>
+        </Switch>
       </div>
     </Router>
   );
