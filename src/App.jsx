@@ -5,7 +5,6 @@ import {
   Redirect,
 } from "react-router-dom";
 import React, { useState } from "react";
-
 import { Layout, Menu, Tabs } from "antd";
 import {
   MenuUnfoldOutlined,
@@ -14,17 +13,15 @@ import {
   AppstoreAddOutlined,
   UserOutlined,
 } from "@ant-design/icons";
-
 import { Header } from "./components/header/header";
 import { Main } from "./components/main/main";
-
 import { PageLogin } from "./pages/login/login";
-import { PageCourses } from "./pages/courses/courses";
-import { PageStore } from "./pages/store/store";
-import { PageUser } from "./pages/user/user";
-import { Link } from "react-router-dom";
-import "antd/dist/antd.css";
-import "./assets/style/main.scss";
+ import { PageCourses } from "./pages/courses/courses";
+ import { PageStore } from "./pages/store/store";
+ import { PageUser } from "./pages/user/user";
+ import { Link } from "react-router-dom";
+ import "antd/dist/antd.css";
+ import "./assets/style/main.scss";
 
 /* 
 COMPONENTES WRAPPER
@@ -34,13 +31,11 @@ export function App() {
   const state = {
     collapsed: true,
   };
-
   const Toggle = () => {
     useState({
       collapsed: !state.collapsed,
     });
   };
-
   return (
     <Router>
       <div className="wrapper">
@@ -51,19 +46,19 @@ export function App() {
               <div
                 className="flex-column navBar"
                 style={{ minHeight: "100vh" }}
-              >
-                <Menu theme="dark" mode="inline" defaultSelectedKeys={["1"]}>
-                  <Menu.Item key="1" icon={<ReadOutlined />}>
-                    <Link to="/courses">Mis cursos</Link>
-                  </Menu.Item>
-                  <Menu.Item key="2" icon={<AppstoreAddOutlined />}>
-                    <Link to="/store">Libreria</Link>
-                  </Menu.Item>
-                  <Menu.Item key="3" icon={<UserOutlined />}>
-                    <Link to="/user">Mi perfil</Link>
-                  </Menu.Item>
-                </Menu>
-                {/* <Menu theme="dark" mode="inline" defaultSelectedKeys={["1"]}>
+               >
+                 <Menu theme="dark" mode="inline" defaultSelectedKeys={["1"]}>
+                   <Menu.Item key="1" icon={<ReadOutlined />}>
+                     <Link to="/courses">Mis cursos</Link>
+                   </Menu.Item>
+                   <Menu.Item key="2" icon={<AppstoreAddOutlined />}>
+                     <Link to="/store">Libreria</Link>
+                   </Menu.Item>
+                   <Menu.Item key="3" icon={<UserOutlined />}>
+                     <Link to="/user">Mi perfil</Link>
+                   </Menu.Item>
+                 </Menu>
+                 {/* <Menu theme="dark" mode="inline" defaultSelectedKeys={["1"]}>
                   <Menu.Item key="4" icon={<UserOutlined />}>
                     Salir
                   </Menu.Item>
@@ -90,7 +85,6 @@ export function App() {
                 }}
               >
                 Step/bar
-
                 card 
                 <div>
                   <Switch>
@@ -111,43 +105,6 @@ export function App() {
               </Content>
             </Layout>
           </Layout>
-          {/* <div className="navBar flex-column min-h-full space-y-[500px]">
-            <div>
-              <Menu
-                onClick={handleClick}
-                className="min-h-full"
-                style={{ width: 256 }}
-                defaultSelectedKeys={["1"]}
-                defaultOpenKeys={["sub1"]}
-                //   mode={mode}
-                //   theme={theme}
-              >
-                <Menu.Item key="1" icon={<ReadOutlined />}>
-                  Mis cursos
-                </Menu.Item>
-                <Menu.Item key="2" icon={<AppstoreOutlined />}>
-                  Libreria
-                </Menu.Item>
-                <Menu.Item key="3" icon={<UserOutlined />}>
-                  Mi perfil
-                </Menu.Item>
-              </Menu>
-            </div>
-            <div>
-              <Menu
-                onClick={handleClick}
-                style={{ width: 256 }}
-                defaultSelectedKeys={["1"]}
-                defaultOpenKeys={["sub1"]}
-                //   mode={mode}
-                //   theme={theme}
-              >
-                <Menu.Item key="4" icon={<ReadOutlined />}>
-                  Salir
-                </Menu.Item>
-              </Menu>
-            </div>
-          </div> */}
         </Main>
       </div>
     </Router>
