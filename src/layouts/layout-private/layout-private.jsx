@@ -17,22 +17,14 @@ import { Link } from "react-router-dom";
 
 export function LayoutPrivate(props) {
   const { Header, Sider, Content } = Layout;
-  const state = {
-    collapsed: true,
-  };
 
-  const Toggle = () => {
-    useState({
-      collapsed: !state.collapsed,
-    });
-  };
-
+  const [toggleMenu, setToggleMenu] = useState(false);
   const [Autorizado, SetAutorizado] = useState(false);
 
   return (
     <div>
       <Layout style={{ minHeight: "100vh" }}>
-        <Sider trigger={null} collapsible collapsed={useState.collapsed}>
+        <Sider trigger={null} collapsible collapsed={toggleMenu}>
           <div className="logo" />
           <div className="flex-column navBar" style={{ minHeight: "100vh" }}>
             <Menu theme="dark" mode="inline" defaultSelectedKeys={["1"]}>
@@ -62,10 +54,13 @@ export function LayoutPrivate(props) {
         <Layout className="site-layout">
           <Header className="site-layout-background" style={{ padding: 0 }}>
             {React.createElement(
-              useState.collapsed ? MenuUnfoldOutlined : MenuFoldOutlined,
+              toggleMenu ? MenuUnfoldOutlined : MenuFoldOutlined,
               {
                 className: "trigger",
-                onClick: Toggle,
+                onClick: () => {
+                  console.log("click!!");
+                  setToggleMenu(!toggleMenu);
+                },
               }
             )}
             Mis Cursos

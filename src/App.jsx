@@ -10,7 +10,7 @@ import "./assets/style/main.scss";
 COMPONENTES WRAPPER
 */
 export function App() {
-  const [isLogin, setIsLogin] = useState(false);
+  const [isLogin, setIsLogin] = useState(true);
 
   return (
     <Router>
@@ -18,7 +18,7 @@ export function App() {
         <Switch>
           <Main>
             {isLogin && <LayoutPrivate />}
-            <LayoutPublic />
+            {!isLogin && <LayoutPublic />}
             {/* <div className="navBar flex-column min-h-full space-y-[500px]">
             <div>
               <Menu
