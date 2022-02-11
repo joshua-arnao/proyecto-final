@@ -2,15 +2,15 @@ import "./login.css";
 import { Form, Input, Button, Checkbox } from "antd";
 import { Redirect, useHistory } from "react-router";
 
-export function PageLogin({ SetAutorizado }) {
+export function PageLogin({ setLogin }) {
   let history = useHistory();
 
   const onFinish = (values) => {
     if (values.username === "test" && values.password === "test") {
-      SetAutorizado(true);
+        setLogin(true);
       history.push("/courses");
     } else {
-      SetAutorizado(false);
+        setLogin(false);
       alert("Contraseña Incorrecta");
     }
   };

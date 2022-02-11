@@ -5,20 +5,20 @@ import { LayoutPrivate } from "./layouts/layout-private/layout-private";
 import { LayoutPublic } from "./layouts/layout-public/layout-public";
 import "antd/dist/antd.css";
 import "./assets/style/main.scss";
-
 /* 
 COMPONENTES WRAPPER
 */
+
+
 export function App() {
   const [isLogin, setIsLogin] = useState(true);
-
   return (
     <Router>
       <div className="wrapper">
         <Switch>
           <Main>
             {isLogin && <LayoutPrivate />}
-            {!isLogin && <LayoutPublic />}
+            {!isLogin && <LayoutPublic/>}
             {/* <div className="navBar flex-column min-h-full space-y-[500px]">
             <div>
               <Menu
