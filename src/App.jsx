@@ -1,3 +1,11 @@
+import { useState } from "react";
+import { BrowserRouter as Router, Switch } from "react-router-dom";
+import { Main } from "./components/main/main";
+import { LayoutPrivate } from "./layouts/layout-private/layout-private";
+import { LayoutPublic } from "./layouts/layout-public/layout-public";
+import "antd/dist/antd.css";
+import "./assets/style/main.scss";
+
 import {
   BrowserRouter as Router,
   Switch,
@@ -27,6 +35,16 @@ import { PageLogin } from "./pages/login/login";
 COMPONENTES WRAPPER
 */
 export function App() {
+  const [isLogin, setIsLogin] = useState(true);
+
+  return (
+    <Router>
+      <div className="wrapper">
+        <Switch>
+          <Main>
+            {isLogin && <LayoutPrivate />}
+            {!isLogin && <LayoutPublic />}
+      
   const { Header, Sider, Content } = Layout;
   const state = {
     collapsed: true,
