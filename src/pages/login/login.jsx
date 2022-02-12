@@ -1,16 +1,24 @@
 import "./login.css";
 import { Form, Input, Button, Checkbox } from "antd";
 import { Redirect, useHistory } from "react-router";
+import { useSelector,useDispatch } from "react-redux";
 
-export function PageLogin({ setLogin }) {
+export function PageLogin() {
+  const dispatch = useDispatch();
   let history = useHistory();
 
   const onFinish = (values) => {
     if (values.username === "test" && values.password === "test") {
-        setLogin(true);
+        dispatch({
+          type:"SET_IS_LOGIN",
+          payload: true,
+        });
       history.push("/courses");
     } else {
-        setLogin(false);
+      dispatch({
+        type:"SET_IS_LOGIN",
+        payload: false,
+      });  
       alert("Contraseña Incorrecta");
     }
   };
@@ -20,7 +28,7 @@ export function PageLogin({ setLogin }) {
   return (
     <div className="loginpage">
       <div>
-        <div className="title"> Cursos Virtuales</div>
+        <div className="title">Cursos Virtuales</div>
         <div className="loging-wrapper">
           <Form
             name="login"

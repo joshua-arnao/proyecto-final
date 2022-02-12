@@ -3,7 +3,7 @@ import { PageLogin } from "../../pages/login/login";
 
 
 
-export function LayoutPublic(props) {
+export function LayoutPublic() {
   return (
     <div>
       <Route path="/login">
