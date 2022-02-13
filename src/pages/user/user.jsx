@@ -4,6 +4,7 @@ import { Form, Input, Select, Button } from "antd";
 import { Redirect } from "react-router";
 import axios from "axios";
 import "./user.css";
+import { useSelector } from "react-redux";
 
 export function PageUser() {
   return (
@@ -15,6 +16,8 @@ export function PageUser() {
 }
 
 function RegistrationForm() {
+  //REDUX USER ID value
+  const globaluserID = useSelector((state)=>state.userID)
   //Predetermined values for the Form.
   const [objectname, setobjectname] = useState([
     {
@@ -24,12 +27,14 @@ function RegistrationForm() {
       email: "",
     },
   ]);
+
+  //Predetermined value to capture if get request values were received already.
   const [isValueLoded, setisValueLoaded] = useState(false);
 
-  //get request for user value and update objectname
+  //GET request for user value and update objectname
   useEffect(() => {
     axios
-      .get("https://61ef3d44d593d20017dbb3a9.mockapi.io/users/1")
+      .get(`https://61ef3d44d593d20017dbb3a9.mockapi.io/users/${globaluserID}`)
       .then((user) => {
         const UpdatedUser = {
           name: user.data.name,
@@ -40,11 +45,11 @@ function RegistrationForm() {
         setobjectname(UpdatedUser);
         setisValueLoaded(true);
       });
-  }, ["https://61ef3d44d593d20017dbb3a9.mockapi.io/users/1"]);
+  }, [`https://61ef3d44d593d20017dbb3a9.mockapi.io/users/${globaluserID}`]);
 
-  //post request after form submitted.
+  //PUT request after form submitted.
   const onFinish = (values) => {
-    //Object to save form data:
+    //Object to save form data retrieved after submit:
     const NewUserData = {
       name: values.name,
       lastname: values.lastname,
@@ -52,9 +57,9 @@ function RegistrationForm() {
       Password: values.password,
       email: values.email,
     };
-    //put request to update api
+    //put request to update api with form values.
     axios
-      .put("https://61ef3d44d593d20017dbb3a9.mockapi.io/users/1", NewUserData)
+      .put(`https://61ef3d44d593d20017dbb3a9.mockapi.io/users/${globaluserID}`, NewUserData)
       .then((updateuser) => {
         alert("Datos actualizados con éxito");
         console.log(updateuser);
@@ -63,7 +68,7 @@ function RegistrationForm() {
         console.log(err);
       });
 
-    //actualizar el api con los nuevos valores.
+    //Log of values updated from form.
     console.log("Received values of form: ", values);
   };
 

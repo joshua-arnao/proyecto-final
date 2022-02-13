@@ -21,7 +21,6 @@ export function LayoutPrivate(props) {
   const { Header, Sider, Content } = Layout;
 
   const [toggleMenu, setToggleMenu] = useState(false);
-  const [Autorizado, SetAutorizado] = useState(false);
 
   const loggedIn = useSelector((state) => state.isLogin);
 
@@ -85,7 +84,7 @@ export function LayoutPrivate(props) {
             }}
           >
             Step/bar card
-            <div>
+            <div> {/* Routes per page after checking if user is logged in via global variable. */}
               {loggedIn ? (
                 <Redirect from="/login" path="/courses">
                   <PageCourses />

@@ -2,6 +2,7 @@ import { createStore } from "redux";
 
 const initialState = {
   isLogin: false,
+  userID: null,
 }
 
 function mainReducer(state=initialState,action) {
@@ -10,6 +11,12 @@ function mainReducer(state=initialState,action) {
       return {
         ...state,
         isLogin: action.payload,
+      }
+    }
+    case "SET_USER_ID": {
+      return {
+        ...state,
+        userID: action.iduser,
       }
     }
     default: return state;
