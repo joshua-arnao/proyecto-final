@@ -1,9 +1,6 @@
 import { Redirect } from "react-router";
 
-export function PageStore(autorizado) {
-    if (!autorizado == true) {
-        <Redirect to="/login"/>
-    }
+export function PageStore() {
 
     return <div>Page Store</div>;
 }

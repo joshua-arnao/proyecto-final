@@ -1,0 +1,23 @@
+.pageuser-container {
+    margin: auto;
+    margin-top: 5%;
+    max-width: 600px;
+    border: 1px solid #010433;
+    background-color: white;
+    border-radius: 10px;
+}
+.pageuser-container h2 {
+    background-color: #010433; 
+    color: whitesmoke;
+    font-size: 3rem;
+    padding: 2rem;
+    border: 2px solid #010433;
+    border-top-right-radius: 7px;
+    border-top-left-radius: 7px;
+}
+#userInfo {
+    padding: 2rem;
+    background-color: rgba(211, 211, 211, 0.733);
+    border-bottom-right-radius: 7px;
+    border-bottom-left-radius: 7px;
+}

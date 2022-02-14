@@ -8,19 +8,23 @@ import {
   UserOutlined,
 } from "@ant-design/icons";
 import { Layout, Menu, Tabs } from "antd";
-
 import { Header } from "../../components/header/header";
 import { PageCourses } from "../../pages/courses/courses";
 import { PageStore } from "../../pages/store/store";
 import { PageUser } from "../../pages/user/user";
+import { PageLogin } from "../../pages/login/login";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { useHistory } from "react-router";
 
 export function LayoutPrivate(props) {
   const { Header, Sider, Content } = Layout;
 
   const [toggleMenu, setToggleMenu] = useState(false);
-  const [Autorizado, SetAutorizado] = useState(false);
 
+  const loggedIn = useSelector((state) => state.isLogin);
+
+  const history = useHistory();
   return (
     <div>
       <Layout style={{ minHeight: "100vh" }}>
@@ -29,19 +33,25 @@ export function LayoutPrivate(props) {
           <div className="flex-column navBar" style={{ minHeight: "100vh" }}>
             <Menu theme="dark" mode="inline" defaultSelectedKeys={["1"]}>
               <Menu.Item key="1" icon={<ReadOutlined />}>
-                <Link to="/courses" autorizado={Autorizado}>
-                  Mis cursos
-                </Link>
+                {loggedIn ? (
+                  <Link to="/courses">Mis Cursos</Link>
+                ) : (
+                  <Link to="/login"></Link>
+                )}
               </Menu.Item>
               <Menu.Item key="2" icon={<AppstoreAddOutlined />}>
-                <Link to="/store" autorizado={Autorizado}>
-                  Libreria
-                </Link>
+                {loggedIn ? (
+                  <Link to="/store">Libreria</Link>
+                ) : (
+                  <Link to="/login"></Link>
+                )}
               </Menu.Item>
               <Menu.Item key="3" icon={<UserOutlined />}>
-                <Link to="/user" autorizado={Autorizado}>
-                  Mi perfil
-                </Link>
+                {loggedIn ? (
+                  <Link to="/user">Mi perfil</Link>
+                ) : (
+                  <Link to="/login"></Link>
+                )}
               </Menu.Item>
             </Menu>
             {/* <Menu theme="dark" mode="inline" defaultSelectedKeys={["1"]}>
@@ -74,17 +84,41 @@ export function LayoutPrivate(props) {
             }}
           >
             Step/bar card
-            <div>
-              <Route path="/courses">
-                <PageCourses autorizado={Autorizado} />
-              </Route>
-              <Route path="/store">
-                <PageStore autorizado={Autorizado} />
-              </Route>
-              <Route path="/user">
-                <PageUser autorizado={Autorizado} />
-              </Route>
-              <Redirect from="/" to="/login"></Redirect>
+            <div> {/* Routes per page after checking if user is logged in via global variable. */}
+              {loggedIn ? (
+                <Redirect from="/login" path="/courses">
+                  <PageCourses />
+                </Redirect>
+              ) : (
+                <Route path="/login">
+                  <PageLogin />
+                </Route>
+              )}
+
+              {loggedIn ? (
+                <Route path="/courses">
+                  <PageCourses />
+                </Route>
+              ) : (
+                history.push("/login")
+              )}
+
+              {loggedIn ? (
+                <Route path="/store">
+                  <PageStore />
+                </Route>
+              ) : (
+                history.push("/login")
+              )}
+
+              {loggedIn ? (
+                <Route path="/user">
+                  <PageUser />
+                </Route>
+              ) : (
+                history.push("/login")
+              )}
+              <Redirect exact from="/" to="/login"></Redirect>
             </div>
           </Content>
         </Layout>
