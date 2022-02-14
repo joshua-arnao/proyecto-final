@@ -6,6 +6,7 @@ import {
   ReadOutlined,
   AppstoreAddOutlined,
   UserOutlined,
+  LogoutOutlined,
 } from "@ant-design/icons";
 import { Layout, Menu, Tabs } from "antd";
 import { Header } from "../../components/header/header";
@@ -30,7 +31,7 @@ export function LayoutPrivate(props) {
       <Layout style={{ minHeight: "100vh" }}>
         <Sider trigger={null} collapsible collapsed={toggleMenu}>
           <div className="logo" />
-          <div className="flex-column navBar" style={{ minHeight: "100vh" }}>
+          <div className="navBar">
             <Menu theme="dark" mode="inline" defaultSelectedKeys={["1"]}>
               <Menu.Item key="1" icon={<ReadOutlined />}>
                 {loggedIn ? (
@@ -54,11 +55,15 @@ export function LayoutPrivate(props) {
                 )}
               </Menu.Item>
             </Menu>
-            {/* <Menu theme="dark" mode="inline" defaultSelectedKeys={["1"]}>
-                  <Menu.Item key="4" icon={<UserOutlined />}>
-                    Salir
-                  </Menu.Item>
-                </Menu> */}
+            <Menu theme="dark" mode="inline">
+              <Menu.Item key="4" icon={<LogoutOutlined />}>
+                {loggedIn ? (
+                  <Link to="/courses">Salir</Link>
+                ) : (
+                  <Link to="/login"></Link>
+                )}
+              </Menu.Item>
+            </Menu>
           </div>
         </Sider>
         <Layout className="site-layout">
@@ -68,12 +73,11 @@ export function LayoutPrivate(props) {
               {
                 className: "trigger",
                 onClick: () => {
-                  console.log("click!!");
                   setToggleMenu(!toggleMenu);
                 },
               }
             )}
-            Mis Cursos
+            Mis cursos
           </Header>
           <Content
             className="site-layout-background"
@@ -83,7 +87,6 @@ export function LayoutPrivate(props) {
               minHeight: 280,
             }}
           >
-            Step/bar card
             <div> {/* Routes per page after checking if user is logged in via global variable. */}
               {loggedIn ? (
                 <Redirect from="/login" path="/courses">
