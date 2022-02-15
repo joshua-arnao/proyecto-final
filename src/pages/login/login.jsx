@@ -9,36 +9,46 @@ export function PageLogin() {
   let history = useHistory();
 
   const onFinish = (values) => {
+    dispatch({
+      type: "SET_IS_LOGIN",
+      payload: true,
+    });
+    history.push("/courses");
     // API Get request to verify a match between username input vs username from api
-    axios
-      .get("https://61ef3d44d593d20017dbb3a9.mockapi.io/users")
-      .then((user) => {
-        if (
-          user.data.filter((users) => users.name == values.username).length == 0
-        ) {
-          console.log("not success");
-          dispatch({
-            type: "SET_IS_LOGIN",
-            payload: false,
-          });
-          alert("Contraseña Incorrecta");
-        } else {
-          var userloggedin = user.data.filter((users) => users.name == values.username);
-          var userarray = userloggedin.map(x=>parseInt(x.id,10));
-          var newUserID = userarray[0];
-          
-          dispatch({
-            type: "SET_IS_LOGIN",
-            payload: true,
-          });
-          dispatch({
-            type: "SET_USER_ID",
-            iduser: newUserID,
-          })
-          history.push("/courses");
-          alert(`Bienvenido ${values.username}`);
-        }
-      });
+    // axios
+    //   .get("https://61ef3d44d593d20017dbb3a9.mockapi.io/users")
+    //   .then((user) => {
+    //     if (
+    //       user.data.filter((users) => users.name == values.username).length == 0
+    //     ) {
+    //       console.log("not success");
+    //       dispatch({
+    //         type: "SET_IS_LOGIN",
+    //         payload: false,
+    //       });
+    //       alert("Contraseña Incorrecta");
+    //     } else {
+    //       var userloggedin = user.data.filter(
+    //         (users) => users.name == values.username
+    //       );
+    //       var userarray = userloggedin.map((x) => parseInt(x.id, 10));
+    //       var newUserID = userarray[0];
+
+    //       dispatch({
+    //         type: "SET_IS_LOGIN",
+    //         payload: true,
+    //       });
+    //       dispatch({
+    //         type: "SET_USER_ID",
+    //         iduser: newUserID,
+    //       });
+    //       history.push("/courses");
+    //       alert(`Bienvenido ${values.username}`);
+    //     }
+    //   })
+    //   .catch(() => {
+    //     alert("error de carga!!");
+    //   });
   };
 
   const onFinishFailed = (errorInfo) => {
