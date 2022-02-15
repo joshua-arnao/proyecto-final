@@ -15,7 +15,7 @@ import { PageStore } from "../../pages/store/store";
 import { PageUser } from "../../pages/user/user";
 import { PageLogin } from "../../pages/login/login";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector,useDispatch } from "react-redux";
 import { useHistory } from "react-router";
 import {PageCourseDetail} from "../../pages/courseDetail/course-detail";
 
@@ -27,6 +27,7 @@ export function LayoutPrivate(props) {
   const loggedIn = useSelector((state) => state.isLogin);
 
   const history = useHistory();
+  const dispatch = useDispatch();
   return (
     <div>
       <Layout style={{ minHeight: "100vh" }}>
@@ -58,11 +59,12 @@ export function LayoutPrivate(props) {
             </Menu>
             <Menu theme="dark" mode="inline">
               <Menu.Item key="4" icon={<LogoutOutlined />}>
-                {loggedIn ? (
-                  <Link to="/courses">Salir</Link>
-                ) : (
-                  <Link to="/login"></Link>
-                )}
+                <span onClick={()=>{
+                  dispatch({
+                    type: "SET_IS_LOGIN",
+                    payload: false,
+                  });
+                }}>SALIR</span>
               </Menu.Item>
             </Menu>
           </div>
