@@ -17,6 +17,7 @@ import { PageLogin } from "../../pages/login/login";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router";
+import {PageCourseDetail} from "../../pages/courseDetail/course-detail";
 
 export function LayoutPrivate(props) {
   const { Header, Sider, Content } = Layout;
@@ -105,7 +106,13 @@ export function LayoutPrivate(props) {
               ) : (
                 history.push("/login")
               )}
-
+              {loggedIn ? (
+                <Route path="/course-detail">
+                  <PageCourseDetail />
+                </Route>
+              ) : (
+                history.push("/login")
+              )}
               {loggedIn ? (
                 <Route path="/store">
                   <PageStore />
