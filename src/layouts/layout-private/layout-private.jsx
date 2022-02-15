@@ -130,7 +130,9 @@ export function LayoutPrivate(props) {
               ) : (
                 history.push("/login")
               )}
-              <Redirect exact from="/" to="/login"></Redirect>
+              {loggedIn ? (
+              <Redirect exact from="/" to="/courses"></Redirect>): (<Redirect exact from="/" to="/login"></Redirect>)}
+              
             </div>
           </Content>
         </Layout>

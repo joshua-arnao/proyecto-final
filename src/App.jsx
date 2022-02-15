@@ -6,7 +6,8 @@ import { LayoutPublic } from "./layouts/layout-public/layout-public";
 import "antd/dist/antd.css";
 import "./assets/style/main.scss";
 import { Provider,useSelector } from "react-redux";
-import {store} from "./store/store";
+import {store,persistor} from "./store/store";
+import { PersistGate } from "redux-persist/integration/react";
 /* 
 COMPONENTES WRAPPER
 */
@@ -16,6 +17,7 @@ export function App() {
   
   return (
     <Provider store={store} >
+      <PersistGate loading={null} persistor={persistor}>
     <Router>
       <div className="wrapper">
         <Switch>
@@ -25,6 +27,7 @@ export function App() {
         </Switch>
       </div>
     </Router>
+    </PersistGate>
     </Provider>
   );
 }
