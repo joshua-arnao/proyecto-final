@@ -9,7 +9,6 @@ import {
   LogoutOutlined,
 } from "@ant-design/icons";
 import { Layout, Menu, Tabs } from "antd";
-import { Header } from "../../components/header/header";
 import { PageCourses } from "../../pages/courses/courses";
 import { PageStore } from "../../pages/store/store";
 import { PageUser } from "../../pages/user/user";
@@ -21,6 +20,8 @@ import { useHistory } from "react-router";
 export function LayoutPrivate(props) {
   const { Header, Sider, Content } = Layout;
 
+  const [value, setValue] = useState(0);
+
   const [toggleMenu, setToggleMenu] = useState(false);
 
   const loggedIn = useSelector((state) => state.isLogin);
@@ -28,7 +29,7 @@ export function LayoutPrivate(props) {
   const history = useHistory();
   return (
     <div>
-      <Layout style={{ minHeight: "100vh" }}>
+      <Layout style={{ minHeight: "100vh" }} value={value}>
         <Sider trigger={null} collapsible collapsed={toggleMenu}>
           <div className="logo" />
           <div className="navBar">
@@ -121,6 +122,7 @@ export function LayoutPrivate(props) {
               ) : (
                 history.push("/login")
               )}
+              
               <Redirect exact from="/" to="/login"></Redirect>
             </div>
           </Content>
