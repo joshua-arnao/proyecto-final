@@ -1,4 +1,4 @@
-import { Card, Avatar, Tabs, Button } from "antd";
+import { Card, Tabs, Button } from "antd";
 import { Redirect } from "react-router";
 import { useSelector } from "react-redux";
 const { Meta } = Card;
@@ -10,7 +10,7 @@ export function PageStore() {
       <div className="card-container">
         <Tabs type="card">
           <TabPane tab="Destacados" key="1">
-            <div className="coursesList grid gap-4">
+            <div className="coursesList flex flex-wrap gap-6">
               <Card
                 style={{ width: 300 }}
                 cover={
@@ -21,7 +21,6 @@ export function PageStore() {
                 }
               >
                 <Meta
-                  avatar={<Avatar src="https://joeschmoe.io/api/v1/random" />}
                   title="¿Cómo desarrollar una cultura de aprendizaje en remoto?"
                   description="Aprendiendo a desarrollar una cultura de aprendizaje y mejora continua como equipo en un contexto..."
                 />
@@ -39,7 +38,6 @@ export function PageStore() {
                 }
               >
                 <Meta
-                  avatar={<Avatar src="https://joeschmoe.io/api/v1/random" />}
                   title="¿Cómo desarrollar una cultura de aprendizaje en remoto?"
                   description="Aprendiendo a desarrollar una cultura de aprendizaje y mejora continua como equipo en un contexto..."
                 />
@@ -57,7 +55,6 @@ export function PageStore() {
                 }
               >
                 <Meta
-                  avatar={<Avatar src="https://joeschmoe.io/api/v1/random" />}
                   title="¿Cómo desarrollar una cultura de aprendizaje en remoto?"
                   description="Aprendiendo a desarrollar una cultura de aprendizaje y mejora continua como equipo en un contexto..."
                 />
@@ -75,7 +72,6 @@ export function PageStore() {
                 }
               >
                 <Meta
-                  avatar={<Avatar src="https://joeschmoe.io/api/v1/random" />}
                   title="¿Cómo desarrollar una cultura de aprendizaje en remoto?"
                   description="Aprendiendo a desarrollar una cultura de aprendizaje y mejora continua como equipo en un contexto..."
                 />
@@ -90,12 +86,12 @@ export function PageStore() {
             <p>Content of Tab Pane 2</p>
             <p>Content of Tab Pane 2</p>
           </TabPane>
-          <TabPane tab="Soft skills" key="2">
+          <TabPane tab="Soft skills" key="3">
             <p>Content of Tab Pane 2</p>
             <p>Content of Tab Pane 2</p>
             <p>Content of Tab Pane 2</p>
           </TabPane>
-          <TabPane tab="Tecnología" key="2">
+          <TabPane tab="Tecnología" key="4">
             <p>Content of Tab Pane 2</p>
             <p>Content of Tab Pane 2</p>
             <p>Content of Tab Pane 2</p>
