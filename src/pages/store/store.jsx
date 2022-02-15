@@ -1,10 +1,12 @@
 import { Card, Tabs, Button } from "antd";
-import { Redirect } from "react-router";
+import { Redirect, useHistory } from "react-router";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 const { Meta } = Card;
 const { TabPane } = Tabs;
 
 export function PageStore() {
+  const history = useHistory();
   return (
     <div className="flex">
       <div className="card-container">
@@ -25,7 +27,7 @@ export function PageStore() {
                   description="Aprendiendo a desarrollar una cultura de aprendizaje y mejora continua como equipo en un contexto..."
                 />
                 <div className="grid mt-8">
-                    <Button className="buttonPrimary" type="primary">VER MAS</Button>
+                    <Button className="buttonPrimary" type="primary" onClick={()=>{history.push("/course-detail")}}>VER MAS</Button>
                 </div>
               </Card>
               <Card
@@ -42,7 +44,7 @@ export function PageStore() {
                   description="Aprendiendo a desarrollar una cultura de aprendizaje y mejora continua como equipo en un contexto..."
                 />
                 <div className="grid mt-8">
-                    <Button className="buttonPrimary" type="primary">VER MAS</Button>
+                    <Button className="buttonPrimary" type="primary" onClick={()=>{history.push("/course-detail")}}>VER MAS</Button>
                 </div>
               </Card>
               <Card
@@ -59,7 +61,7 @@ export function PageStore() {
                   description="Aprendiendo a desarrollar una cultura de aprendizaje y mejora continua como equipo en un contexto..."
                 />
                 <div className="grid mt-8">
-                    <Button className="buttonPrimary" type="primary">VER MAS</Button>
+                    <Button className="buttonPrimary" type="primary" onClick={()=>{history.push("/course-detail")}}>VER MAS</Button>
                 </div>
               </Card>
               <Card
@@ -76,7 +78,7 @@ export function PageStore() {
                   description="Aprendiendo a desarrollar una cultura de aprendizaje y mejora continua como equipo en un contexto..."
                 />
                 <div className="grid mt-8">
-                    <Button className="buttonPrimary" type="primary">VER MAS</Button>
+                    <Button className="buttonPrimary" type="primary" onClick={()=>{history.push("/course-detail")}}>VER MAS</Button>
                 </div>
               </Card>
             </div>
