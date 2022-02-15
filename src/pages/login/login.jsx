@@ -14,7 +14,7 @@ export function PageLogin() {
       .get("https://61ef3d44d593d20017dbb3a9.mockapi.io/users")
       .then((user) => {
         if (
-          user.data.filter((users) => users.name == values.username).length == 0
+          user.data.filter((users) => (users.name == values.username) && (users.Password == values.password)).length == 0
         ) {
           console.log("not success");
           dispatch({
