@@ -18,9 +18,8 @@ import { useSelector, useDispatch } from "react-redux";
 
 import { PageCourseDetail } from "../../pages/courseDetail/course-detail";
 
-export function LayoutPrivate(props) {
+export function LayoutPrivate() {
   const { Header, Sider, Content } = Layout;
-  const { children } = props;
 
   const [toggleMenu, setToggleMenu] = useState(false);
 
@@ -96,9 +95,8 @@ export function LayoutPrivate(props) {
             }}
           >
             <div>
-              {" "}
               {/* Routes per page after checking if user is logged in via global variable. */}
-              {/* {loggedIn ? (
+               {loggedIn ? (
                 <Redirect from="/login" path="/courses">
                   <PageCourses />
                 </Redirect>
@@ -139,8 +137,7 @@ export function LayoutPrivate(props) {
                 <Redirect exact from="/" to="/courses"></Redirect>
               ) : (
                 <Redirect exact from="/" to="/login"></Redirect>
-              )} */}
-              {children}
+              )}
             </div>
           </Content>
         </Layout>
