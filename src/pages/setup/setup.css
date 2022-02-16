@@ -1,15 +1,15 @@
-.pageuser-container {
+.pageusersetup {
     margin: auto;
     margin-top: 5%;
     max-width: 600px;
     background-color: white;
 }
-.pageuser-container h2 {
+.pageusersetup h2 {
     font-weight: 500;
     text-align: center;
     font-size: 3rem;
     padding: 2rem;
 }
-#userInfo {
+/* #userInfo {
     padding: 2rem;
-}
+} */
