@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Route, Redirect } from "react-router-dom";
+import { Route, Redirect, useHistory } from "react-router-dom";
 import {
   MenuUnfoldOutlined,
   MenuFoldOutlined,
@@ -8,17 +8,17 @@ import {
   UserOutlined,
   LogoutOutlined,
 } from "@ant-design/icons";
-import { Layout, Menu, Tabs } from "antd";
+import { Layout, Menu} from "antd";
 import { PageCourses } from "../../pages/courses/courses";
 import { PageStore } from "../../pages/store/store";
 import { PageUser } from "../../pages/user/user";
 import { PageLogin } from "../../pages/login/login";
 import { Link } from "react-router-dom";
-import { useSelector,useDispatch } from "react-redux";
-import { useHistory } from "react-router";
-import {PageCourseDetail} from "../../pages/courseDetail/course-detail";
+import { useSelector, useDispatch } from "react-redux";
 
-export function LayoutPrivate(props) {
+import { PageCourseDetail } from "../../pages/courseDetail/course-detail";
+
+export function LayoutPrivate() {
   const { Header, Sider, Content } = Layout;
 
   const [value, setValue] = useState(0);
@@ -60,12 +60,17 @@ export function LayoutPrivate(props) {
             </Menu>
             <Menu theme="dark" mode="inline">
               <Menu.Item key="4" icon={<LogoutOutlined />}>
-                <span onClick={()=>{
-                  dispatch({
-                    type: "SET_IS_LOGIN",
-                    payload: false,
-                  });
-                }}>SALIR</span>
+                <span
+                  onClick={() => {
+                    dispatch({
+                      type: "SET_IS_LOGIN",
+                      payload: false,
+                    });
+                    history.push("/login");
+                  }}
+                >
+                  SALIR
+                </span>
               </Menu.Item>
             </Menu>
           </div>
@@ -91,8 +96,9 @@ export function LayoutPrivate(props) {
               minHeight: 280,
             }}
           >
-            <div> {/* Routes per page after checking if user is logged in via global variable. */}
-              {loggedIn ? (
+            <div>
+              {/* Routes per page after checking if user is logged in via global variable. */}
+               {loggedIn ? (
                 <Redirect from="/login" path="/courses">
                   <PageCourses />
                 </Redirect>
@@ -101,7 +107,6 @@ export function LayoutPrivate(props) {
                   <PageLogin />
                 </Route>
               )}
-
               {loggedIn ? (
                 <Route path="/courses">
                   <PageCourses />
@@ -123,7 +128,6 @@ export function LayoutPrivate(props) {
               ) : (
                 history.push("/login")
               )}
-
               {loggedIn ? (
                 <Route path="/user">
                   <PageUser />
@@ -131,14 +135,11 @@ export function LayoutPrivate(props) {
               ) : (
                 history.push("/login")
               )}
-<<<<<<< HEAD
               
               <Redirect exact from="/" to="/login"></Redirect>
-=======
               {loggedIn ? (
+
               <Redirect exact from="/" to="/courses"></Redirect>): (<Redirect exact from="/" to="/login"></Redirect>)}
-              
->>>>>>> 401e86f993fede31e678dc57764257ed9aba20f1
             </div>
           </Content>
         </Layout>

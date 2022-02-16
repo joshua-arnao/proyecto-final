@@ -1,8 +1,9 @@
 import "./login.css";
-import { Form, Input, Button, Checkbox, Empty } from "antd";
-import { Redirect, useHistory } from "react-router";
-import { useSelector, useDispatch } from "react-redux";
+import { useHistory } from "react-router";
+import { useDispatch } from "react-redux";
 import axios from "axios";
+import 'antd/dist/antd.css';
+import {Form, Input, Button} from 'antd';
 
 export function PageLogin() {
   const dispatch = useDispatch();
@@ -14,7 +15,7 @@ export function PageLogin() {
       .get("https://61ef3d44d593d20017dbb3a9.mockapi.io/users")
       .then((user) => {
         if (
-          user.data.filter((users) => users.name == values.username).length == 0
+          user.data.filter((users) => (users.name == values.username) && (users.Password == values.password)).length == 0
         ) {
           console.log("not success");
           dispatch({
