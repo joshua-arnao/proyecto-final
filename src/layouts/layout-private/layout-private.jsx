@@ -57,18 +57,12 @@ export function LayoutPrivate() {
               </Menu.Item>
             </Menu>
             <Menu theme="dark" mode="inline">
-              <Menu.Item key="4" icon={<LogoutOutlined />}>
-                <span
-                  onClick={() => {
-                    dispatch({
+              <Menu.Item key="4" icon={<LogoutOutlined />} onClick={()=>{dispatch({
                       type: "SET_IS_LOGIN",
                       payload: false,
                     });
-                    history.push("/login");
-                  }}
-                >
-                  SALIR
-                </span>
+                    history.push("/login");}}>
+                <span>SALIR</span>
               </Menu.Item>
             </Menu>
           </div>

@@ -1,10 +1,12 @@
 import { Button } from "antd";
 import { LeftOutlined } from "@ant-design/icons";
+import { useHistory } from "react-router";
 
 export function PageCourseDetail() {
+  const history = useHistory();
   return (
     <div className="Page-Course-Detail">
-      <Button className="flex align-middle mb-8" type="link" icon={<LeftOutlined />}>
+      <Button className="flex align-middle mb-8" type="link" icon={<LeftOutlined />} onClick={()=>{history.push("/store")}}>
         Regresar
       </Button>
       <div>
