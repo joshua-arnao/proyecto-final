@@ -5,8 +5,10 @@ import { useHistory } from "react-router";
 export function PageCourseDetail() {
   const history = useHistory();
   const { Panel } = Collapse;
-
   const text = `Los negocios que triunfan en la era digital son los que entienden que el éxito no está en adoptar la tecnología como su core, sino en el cómo utilizarla para potenciar sus propias fortalezas. En este curso podrás conocer mejor por qué es importante transformar al equipo y a uno mismo, para luego poder utilizar herramientas digitales que potencien tu negocio.`;
+  const textDos = `En esta unidad podrás encontrar más información sobre nuestro Curso introductorio, así como la estructura, objetivos de aprendizaje e información acerca de las facilitadores.`;
+  const subTitleUno = `Antes de empezar`;
+
   return (
     <div className="Page-Course-Detail">
       <Button
@@ -45,16 +47,14 @@ export function PageCourseDetail() {
       </div>
       <Space direction="vertical">
         <Collapse collapsible="header" defaultActiveKey={["1"]}>
-          <Panel
-            header="This panel can only be collapsed by clicking text"
-            key="1"
-          >
+          <Panel header="Acerca del curso" key="1">
             <p>{text}</p>
           </Panel>
         </Collapse>
         <Collapse collapsible="header" defaultActiveKey={["2"]}>
-          <Panel header="This panel can't be collapsed" key="1">
-            <p>{text}</p>
+          <Panel header="Temario" key="1">
+            <h4>{subTitleUno}</h4>
+            <p>{textDos}</p>
           </Panel>
         </Collapse>
       </Space>
