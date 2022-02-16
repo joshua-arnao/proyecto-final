@@ -108,9 +108,7 @@ function RegistrationForm() {
 
   //conditional rendering only if axios get request was loaded.
   return !isValueLoded ? (
-    <div style={{ padding: "10px", fontWeight: "bold", fontSize: "20px" }}>
-      Loading...
-    </div>
+    <div className="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
   ) : (
     <Form
       {...formItemLayout}
@@ -222,6 +220,7 @@ function RegistrationForm() {
 
       <Form.Item {...tailFormItemLayout}>
         <Button
+        className="buttonPrimary"
           type="primary"
           htmlType="submit"
           style={{
