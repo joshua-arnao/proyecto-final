@@ -36,10 +36,15 @@ html {
   height: 85%;
 }
 
-.coursesList {
-
-}
-
 .buttonPrimary {
   color: #1890ff;
+}
+
+.treeData {
+ 
+  div {
+    margin: 4px 0px;
+    align-content: center;
+    display: flex;
+  }
 }

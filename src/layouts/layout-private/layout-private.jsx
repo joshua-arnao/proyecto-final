@@ -15,6 +15,7 @@ import { PageStore } from "../../pages/store/store";
 import { PageUser } from "../../pages/user/user";
 import { PageLogin } from "../../pages/login/login";
 import { PageGestion } from "../../pages/gestionUsers/gestionUsers";
+import { PageLearnCourse } from "../../pages/learnCourse/learnCourse";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
@@ -107,6 +108,13 @@ export function LayoutPrivate() {
                 <Route path="/login">
                   <PageLogin />
                 </Route>
+              )}
+              {loggedIn ? (
+                <Route path="/learnCourse">
+                  <PageLearnCourse />
+                </Route>
+              ) : (
+                history.push("/login")
               )}
               {loggedIn ? (
                 <Route path="/courses">
