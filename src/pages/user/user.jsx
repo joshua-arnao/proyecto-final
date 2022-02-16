@@ -4,6 +4,10 @@ import axios from "axios";
 import "./user.css";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router";
+import { Spin } from 'antd';
+import { LoadingOutlined } from '@ant-design/icons';
+
+const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
 
 export function PageUser() {
   return (
@@ -108,9 +112,7 @@ function RegistrationForm() {
 
   //conditional rendering only if axios get request was loaded.
   return !isValueLoded ? (
-    <div style={{ padding: "10px", fontWeight: "bold", fontSize: "20px" }}>
-      Loading...
-    </div>
+    <Spin indicator={antIcon} style={{marginLeft:"40%",marginRight:"40%",marginTop:"10%"}}/>
   ) : (
     <Form
       {...formItemLayout}
@@ -222,6 +224,7 @@ function RegistrationForm() {
 
       <Form.Item {...tailFormItemLayout}>
         <Button
+        className="buttonPrimary"
           type="primary"
           htmlType="submit"
           style={{
