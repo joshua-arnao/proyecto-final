@@ -1,7 +1,5 @@
 import { Card, Tabs, Button } from "antd";
-import { Redirect, useHistory } from "react-router";
-import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { useHistory } from "react-router";
 const { Meta } = Card;
 const { TabPane } = Tabs;
 

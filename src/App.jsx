@@ -1,13 +1,19 @@
+main
+import { BrowserRouter as Router, Switch } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { HashRouter as Router, Switch } from "react-router-dom";
 import { Route, Redirect } from "react-router-dom";
+main
 import { Main } from "./components/main/main";
 import { LayoutPrivate } from "./layouts/layout-private/layout-private";
-import { LayoutPublic } from "./layouts/layout-public/layout-public";
 import "antd/dist/antd.css";
 import "./assets/style/main.scss";
+main
+import { Provider} from "react-redux";
+import {store,persistor} from "./store/store";
 import { Provider, useSelector } from "react-redux";
 import { store, persistor } from "./store/store";
+main
 import { PersistGate } from "redux-persist/integration/react";
 import { PageCourses } from "./pages/courses/courses";
 import { PageStore } from "./pages/store/store";

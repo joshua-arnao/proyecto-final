@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { ReactDOM } from "react";
-import { Form, Input, Select, Button } from "antd";
-import { Redirect } from "react-router";
+import { Form, Input, Button } from "antd";
 import axios from "axios";
 import "./user.css";
 import { useSelector } from "react-redux";
+import { useHistory } from "react-router";
 
 export function PageUser() {
   return (
@@ -18,6 +17,7 @@ export function PageUser() {
 function RegistrationForm() {
   //REDUX USER ID value
   const globaluserID = useSelector((state)=>state.userID)
+  const history = useHistory();
   //Predetermined values for the Form.
   const [objectname, setobjectname] = useState([
     {
@@ -233,7 +233,7 @@ function RegistrationForm() {
         >
           Save
         </Button>
-        <Button type="secondary" style={{ marginLeft: "5px" }}>
+        <Button type="secondary" style={{ marginLeft: "5px" }} onClick={()=>{history.push("/courses")}}>
           Cancel
         </Button>
       </Form.Item>
