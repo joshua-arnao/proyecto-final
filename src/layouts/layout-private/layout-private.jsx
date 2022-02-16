@@ -8,8 +8,7 @@ import {
   UserOutlined,
   LogoutOutlined,
 } from "@ant-design/icons";
-import { Layout, Menu, Tabs } from "antd";
-import { Header } from "../../components/header/header";
+import { Layout, Menu} from "antd";
 import { PageCourses } from "../../pages/courses/courses";
 import { PageStore } from "../../pages/store/store";
 import { PageUser } from "../../pages/user/user";

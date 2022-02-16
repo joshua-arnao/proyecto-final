@@ -1,6 +1,4 @@
 import { Card, Avatar, Tabs, Button } from "antd";
-import { Redirect } from "react-router";
-import { useSelector } from "react-redux";
 const { Meta } = Card;
 const { TabPane } = Tabs;
 

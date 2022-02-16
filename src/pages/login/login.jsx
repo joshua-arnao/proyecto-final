@@ -1,7 +1,7 @@
 import "./login.css";
-import { Form, Input, Button, Checkbox, Empty } from "antd";
-import { Redirect, useHistory } from "react-router";
-import { useSelector, useDispatch } from "react-redux";
+import { Form, Input, Button} from "antd";
+import { useHistory } from "react-router";
+import { useDispatch } from "react-redux";
 import axios from "axios";
 
 export function PageLogin() {

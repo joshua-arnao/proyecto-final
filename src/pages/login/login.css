@@ -60,6 +60,11 @@ table {
     background-image: url("../../assets/background.png");
     background-repeat:repeat;
     background-size: contain;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
 }
 .loging-wrapper {
     width: 400px;
