@@ -7,12 +7,14 @@ import {
   AppstoreAddOutlined,
   UserOutlined,
   LogoutOutlined,
+  PieChartOutlined
 } from "@ant-design/icons";
 import { Layout, Menu} from "antd";
 import { PageCourses } from "../../pages/courses/courses";
 import { PageStore } from "../../pages/store/store";
 import { PageUser } from "../../pages/user/user";
 import { PageLogin } from "../../pages/login/login";
+import { PageGestion } from "../../pages/gestionUsers/gestionUsers";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
@@ -51,6 +53,13 @@ export function LayoutPrivate() {
               <Menu.Item key="3" icon={<UserOutlined />}>
                 {loggedIn ? (
                   <Link to="/user">Mi perfil</Link>
+                ) : (
+                  <Link to="/login"></Link>
+                )}
+              </Menu.Item>
+              <Menu.Item key="4" icon={<PieChartOutlined />}>
+                {loggedIn ? (
+                  <Link to="/gestionUsers">Gestión de Usuarios</Link>
                 ) : (
                   <Link to="/login"></Link>
                 )}
@@ -123,6 +132,13 @@ export function LayoutPrivate() {
               {loggedIn ? (
                 <Route path="/user">
                   <PageUser />
+                </Route>
+              ) : (
+                history.push("/login")
+              )}
+              {loggedIn ? (
+                <Route path="/gestionUsers">
+                  <PageGestion />
                 </Route>
               ) : (
                 history.push("/login")

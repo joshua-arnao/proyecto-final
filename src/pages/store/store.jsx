@@ -25,7 +25,7 @@ export function PageStore() {
                   description="Aprendiendo a desarrollar una cultura de aprendizaje y mejora continua como equipo en un contexto..."
                 />
                 <div className="grid mt-8">
-                    <Button className="buttonPrimary" type="primary" onClick={()=>{history.push("/course-detail")}}>VER MAS</Button>
+                    <Button className="buttonPrimary w-full" type="primary" onClick={()=>{history.push("/course-detail")}}>VER MAS</Button>
                 </div>
               </Card>
               <Card

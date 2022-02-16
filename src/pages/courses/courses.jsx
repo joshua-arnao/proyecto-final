@@ -18,13 +18,12 @@ export function PageCourses() {
                   />
                 }
               >
-                <Meta
-                  avatar={<Avatar src="https://joeschmoe.io/api/v1/random" />}
+                <Meta              
                   title="¿Cómo desarrollar una cultura de aprendizaje en remoto?"
                   description="Aprendiendo a desarrollar una cultura de aprendizaje y mejora continua como equipo en un contexto..."
                 />
                 <div className="grid mt-8">
-                    <Button className="buttonPrimary" type="primary">INGRESAR</Button>
+                    <Button className="buttonPrimary w-full"  type="primary">INGRESAR</Button>
                 </div>
               </Card>
             </div>
