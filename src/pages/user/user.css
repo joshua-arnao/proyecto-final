@@ -72,3 +72,8 @@
       transform: translate(24px, 0);
     }
   }
+
+  .buttonPrimary {
+    color: #1890ff;
+    width: 100px;
+  }

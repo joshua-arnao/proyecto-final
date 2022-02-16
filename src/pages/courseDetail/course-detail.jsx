@@ -8,6 +8,10 @@ export function PageCourseDetail() {
   const text = `Los negocios que triunfan en la era digital son los que entienden que el éxito no está en adoptar la tecnología como su core, sino en el cómo utilizarla para potenciar sus propias fortalezas. En este curso podrás conocer mejor por qué es importante transformar al equipo y a uno mismo, para luego poder utilizar herramientas digitales que potencien tu negocio.`;
   const textDos = `En esta unidad podrás encontrar más información sobre nuestro Curso introductorio, así como la estructura, objetivos de aprendizaje e información acerca de las facilitadores.`;
   const subTitleUno = `Antes de empezar`;
+  const textTres = `En esta unidad podrás encontrar más información sobre nuestro Curso introductorio, así como la estructura, objetivos de aprendizaje e información acerca de las facilitadores.`;
+  const subTitleDos = `Antes de empezar`;
+  const textCuatro = `En esta unidad podrás encontrar más información sobre nuestro Curso introductorio, así como la estructura, objetivos de aprendizaje e información acerca de las facilitadores.`;
+  const subTitleTres = `Antes de empezar`;
 
   return (
     <div className="Page-Course-Detail">
@@ -55,6 +59,10 @@ export function PageCourseDetail() {
           <Panel header="Temario" key="1">
             <h4>{subTitleUno}</h4>
             <p>{textDos}</p>
+            <h4>{subTitleDos}</h4>
+            <p>{textTres}</p>
+            <h4>{subTitleTres}</h4>
+            <p>{textCuatro}</p>
           </Panel>
         </Collapse>
       </Space>
