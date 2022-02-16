@@ -109,7 +109,7 @@ function RegistrationForm() {
 
   //conditional rendering only if axios get request was loaded.
   return !isValueLoded ? (
-    <Spin tip="Cargando..." style={{marginLeft:"40%",marginRight:"40%",marginTop:"10%"}}>
+    <Spin tip="Cargando..." size="large" style={{marginLeft:"40%",marginRight:"40%",marginTop:"10%"}}>
   </Spin>
   ) : (
     <Form
