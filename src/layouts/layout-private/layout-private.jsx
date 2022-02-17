@@ -20,6 +20,8 @@ import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
 import { PageCourseDetail } from "../../pages/courseDetail/course-detail";
+import { PageMenuSetup } from "../../pages/setup/menusetup";
+import { PageUserList } from "../../pages/setup/userlist";
 
 export function LayoutPrivate() {
   const { Header, Sider, Content } = Layout;
@@ -145,8 +147,22 @@ export function LayoutPrivate() {
                 history.push("/login")
               )}
               {loggedIn ? (
-                <Route path="/setup">
+                <Route exact path="/setup">
+                  <PageMenuSetup />
+                </Route>
+              ) : (
+                history.push("/login")
+              )}
+              {loggedIn ? (
+                <Route path="/setup/newuser">
                   <PageUserSetup />
+                </Route>
+              ) : (
+                history.push("/login")
+              )}
+              {loggedIn ? (
+                <Route path="/setup/userlist">
+                  <PageUserList />
                 </Route>
               ) : (
                 history.push("/login")
