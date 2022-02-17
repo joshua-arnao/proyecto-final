@@ -3,7 +3,7 @@ import { Form, Input, Button } from "antd";
 import axios from "axios";
 import "./user.css";
 import { useSelector } from "react-redux";
-import { useHistory } from "react-router";
+import { useHistory,useLocation } from "react-router";
 import { Spin} from 'antd';
 
 export function PageUser() {
@@ -19,6 +19,7 @@ function RegistrationForm() {
   //REDUX USER ID value
   const globaluserID = useSelector((state)=>state.userID)
   const history = useHistory();
+  const location = useLocation();
   //Predetermined values for the Form.
   const [objectname, setobjectname] = useState([
     {
@@ -67,6 +68,7 @@ function RegistrationForm() {
       .then((updateuser) => {
         alert("Datos actualizados con éxito");
         console.log(updateuser);
+        form.resetFields();
       })
       .catch((err) => {
         console.log(err);

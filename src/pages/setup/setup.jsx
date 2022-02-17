@@ -34,6 +34,7 @@ function SetupForm() {
       .post(`https://61ef3d44d593d20017dbb3a9.mockapi.io/users/`, NewUserData)
       .then((updateuser) => {
         alert("Usuario creado con éxito");
+        form.resetFields();
         console.log(updateuser);
       })
       .catch((err) => {
@@ -229,7 +230,7 @@ function SetupForm() {
           type="secondary"
           style={{ marginLeft: "5px" }}
           onClick={() => {
-            history.push("/courses");
+            history.push("/setup");
           }}
         >
           Cancel
