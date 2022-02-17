@@ -1,56 +1,24 @@
-import React, { useState, useEffect } from "react";
-import { Form, Input, Button } from "antd";
-import axios from "axios";
-import "./user.css";
+// validacion para que el user id sea solo el 1, sino "acceso denegado"
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router";
-import { Spin} from 'antd';
-
-export function PageUser() {
-  return (
-    <div className="pageuser-container">
-      <h2>Datos del Usuario:</h2>
-      <RegistrationForm />
+import axios from "axios";
+import {Form,Input, Button} from "antd";
+import "./setup.css";
+export function PageUserSetup() {
+    return (
+    <div className="pageusersetup">
+      <h2>Crear Nuevo Usuario:</h2>
+      <SetupForm />
     </div>
   );
 }
 
-function RegistrationForm() {
-  //REDUX USER ID value
-  const globaluserID = useSelector((state)=>state.userID)
+function SetupForm() {
+
+    const globaluserID = useSelector((state) => state.userID);
   const history = useHistory();
-  //Predetermined values for the Form.
-  const [objectname, setobjectname] = useState([
-    {
-      name: "",
-      lastName: "",
-      taxpayer: "",
-      email: "",
-      username: "",
-    },
-  ]);
 
-  //Predetermined value to capture if get request values were received already.
-  const [isValueLoded, setisValueLoaded] = useState(false);
-
-  //GET request for user value and update objectname
-  useEffect(() => {
-    axios
-      .get(`https://61ef3d44d593d20017dbb3a9.mockapi.io/users/${globaluserID}`)
-      .then((user) => {
-        const UpdatedUser = {
-          name: user.data.name,
-          lastname: user.data.lastname,
-          taxpayer: user.data.TaxPayer,
-          email: user.data.email,
-          username: user.data.username,
-        };
-        setobjectname(UpdatedUser);
-        setisValueLoaded(true);
-      });
-  }, [`https://61ef3d44d593d20017dbb3a9.mockapi.io/users/${globaluserID}`]);
-
-  //PUT request after form submitted.
+  //POST request after form submitted.
   const onFinish = (values) => {
     //Object to save form data retrieved after submit:
     const NewUserData = {
@@ -61,11 +29,11 @@ function RegistrationForm() {
       email: values.email,
       username: values.username,
     };
-    //put request to update api with form values.
+    //post request to create a user in the api with form values.
     axios
-      .put(`https://61ef3d44d593d20017dbb3a9.mockapi.io/users/${globaluserID}`, NewUserData)
+      .post(`https://61ef3d44d593d20017dbb3a9.mockapi.io/users/`, NewUserData)
       .then((updateuser) => {
-        alert("Datos actualizados con éxito");
+        alert("Usuario creado con éxito");
         console.log(updateuser);
       })
       .catch((err) => {
@@ -109,19 +77,13 @@ function RegistrationForm() {
   };
   //FORM
   const [form] = Form.useForm();
-
-  //conditional rendering only if axios get request was loaded.
-  return !isValueLoded ? (
-    <Spin tip="Cargando..." size="large" style={{marginLeft:"40%",marginRight:"40%",marginTop:"10%"}}>
-  </Spin>
-  ) : (
+  return globaluserID == 1 ? (
     <Form
       {...formItemLayout}
       form={form}
       name="userInfo"
       onFinish={onFinish}
       scrollToFirstError
-      initialValues={objectname}
     >
       <Form.Item
         name="name"
@@ -188,14 +150,20 @@ function RegistrationForm() {
         label="Username"
         rules={[
           {
+            required: true,
+            message: "The input is not a valid username",
+          },
+          {
             type: "string",
             message: "The input is not a valid username",
           },
           () => ({
-            validator(rule, value="") {
+            validator(rule, value = "") {
               if (value.includes(" ") === true) {
                 return Promise.reject("username should not contain spaces");
-              } else { return Promise.resolve()}
+              } else {
+                return Promise.resolve();
+              }
             },
           }),
         ]}
@@ -245,16 +213,30 @@ function RegistrationForm() {
 
       <Form.Item {...tailFormItemLayout}>
         <Button
-        className="buttonPrimary"
+          className="buttonPrimary"
           type="primary"
           htmlType="submit"
+          style={{
+            color: "black",
+            fontWeight: "500",
+            letterSpacing: "1px",
+            width: "100px",
+          }}
         >
-          Save
+          Create
         </Button>
-        <Button type="secondary" style={{ marginLeft: "5px" }} onClick={()=>{history.push("/courses")}}>
+        <Button
+          type="secondary"
+          style={{ marginLeft: "5px" }}
+          onClick={() => {
+            history.push("/courses");
+          }}
+        >
           Cancel
         </Button>
       </Form.Item>
     </Form>
-  );
+  ) : (<div style={{display:"flex",flexDirection:"column",gap:"1rem"}}><span>Permisos Insuficientes</span><Button style={{justifySelf:"flex-start",alignSelf:"flex-start"}} onClick={() => {
+    history.push("/courses");
+  }}>Regresar</Button></div>)
 }

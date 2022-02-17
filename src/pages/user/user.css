@@ -12,6 +12,7 @@
 }
 #userInfo {
     padding: 2rem;
+
 }
 /* animation */
 .lds-ellipsis {
@@ -75,5 +76,5 @@
 
   .buttonPrimary {
     color: #1890ff;
-    width: 100px;
   }
+}
