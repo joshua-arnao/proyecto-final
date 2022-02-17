@@ -22,6 +22,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { PageCourseDetail } from "../../pages/courseDetail/course-detail";
 import { PageMenuSetup } from "../../pages/setup/menusetup";
 import { PageUserList } from "../../pages/setup/userlist";
+import { PageSetupCourse } from "../../pages/setup/setupcourse";
 
 export function LayoutPrivate() {
   const { Header, Sider, Content } = Layout;
@@ -73,6 +74,7 @@ export function LayoutPrivate() {
                       type: "SET_IS_LOGIN",
                       payload: false,
                     });
+                    window.location.reload();
                     history.push("/login");}}>
                 <span>SALIR</span>
               </Menu.Item>
@@ -163,6 +165,13 @@ export function LayoutPrivate() {
               {loggedIn ? (
                 <Route path="/setup/userlist">
                   <PageUserList />
+                </Route>
+              ) : (
+                history.push("/login")
+              )}
+              {loggedIn ? (
+                <Route path="/setup/newcourse">
+                  <PageSetupCourse />
                 </Route>
               ) : (
                 history.push("/login")
