@@ -253,7 +253,7 @@ function RegistrationForm() {
         >
           Save
         </Button>
-        <Button type="secondary" style={{ marginLeft: "5px" }} onClick={()=>{history.push("/courses")}}>
+        <Button type="secondary" style={{ marginLeft: "5px" }} onClick={()=>{window.location.reload(); history.push("/courses")}}>
           Cancel
         </Button>
       </Form.Item>

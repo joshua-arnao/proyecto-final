@@ -6,7 +6,7 @@ export function PageMenuSetup() {
   const { Title } = Typography;
   return (
     <div className="pagemenusetup">
-      <Title level={3}>Seleccione una acción:</Title>
+      <Title level={3}>Setup Manager:</Title>
       <MenuForm />
     </div>
   );
@@ -15,26 +15,45 @@ export function PageMenuSetup() {
 function MenuForm() {
   const globaluserID = useSelector((state) => state.userID);
   const history = useHistory();
+  const { Title } = Typography;
   return globaluserID == 1 ? (
     <div>
-      <Button
-        size={"large"}
-        onClick={() => {
-          history.push("/setup/newuser");
-        }}
-        style={{ marginBottom: "1rem" }}
-      >
-        Crear Nuevo Usuario
-      </Button>{" "}
-      <br />
-      <Button
-        size={"large"}
-        onClick={() => {
-          history.push("/setup/userlist");
-        }}
-      >
-        Ver Lista de Usuarios
-      </Button>
+      <Title level={5}>Usuarios:</Title>
+      <div>
+        <Button
+          size={"large"}
+          onClick={() => {
+            history.push("/setup/newuser");
+          }}
+          style={{ marginBottom: "1rem",width:"160px" }}
+        >
+          Nuevo Usuario
+        </Button>
+        <br />
+        <Button
+          size={"large"}
+          style={{marginBottom: "1rem",width:"160px"}}
+          onClick={() => {
+            history.push("/setup/userlist");
+          }}
+        >
+          Lista de Usuarios
+        </Button>
+        <br/>
+        <Title level={5}>Cursos:</Title>
+        <Button
+          size={"large"}
+          style={{width:"160px"}}
+          onClick={() => {
+            history.push("/setup/newcourse");
+          }}
+        >
+          Nuevo Curso
+        </Button>
+      </div>
+      {/* <div>
+        
+      </div> */}
     </div>
   ) : (
     <div>
@@ -46,6 +65,7 @@ function MenuForm() {
           marginTop: "1rem",
         }}
         onClick={() => {
+          window.location.reload();
           history.push("/courses");
         }}
       >
