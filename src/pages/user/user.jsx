@@ -248,12 +248,6 @@ function RegistrationForm() {
         className="buttonPrimary"
           type="primary"
           htmlType="submit"
-          style={{
-            color: "black",
-            fontWeight: "500",
-            letterSpacing: "1px",
-            width: "100px",
-          }}
         >
           Save
         </Button>
