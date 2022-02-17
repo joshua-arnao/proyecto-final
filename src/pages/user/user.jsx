@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Form, Input, Button } from "antd";
+import { Form, Input, Button, Alert } from "antd";
 import axios from "axios";
 import "./user.css";
 import { useSelector } from "react-redux";
@@ -156,7 +156,7 @@ function RegistrationForm() {
         label="National ID"
         rules={[
           {
-            type: "string", //por alguna razón no funciona la validación de número?
+            type: "string",
             message: "Please enter a Number",
           },
           {

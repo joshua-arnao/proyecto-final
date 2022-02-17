@@ -2,7 +2,7 @@
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router";
 import axios from "axios";
-import {Form,Input, Button} from "antd";
+import {Form,Input, Button,Alert} from "antd";
 import "./setup.css";
 export function PageUserSetup() {
     return (
@@ -237,7 +237,12 @@ function SetupForm() {
         </Button>
       </Form.Item>
     </Form>
-  ) : (<div style={{display:"flex",flexDirection:"column",gap:"1rem"}}><span>Permisos Insuficientes</span><Button style={{justifySelf:"flex-start",alignSelf:"flex-start"}} onClick={() => {
-    history.push("/courses");
-  }}>Regresar</Button></div>)
+  ) : (
+  <div>
+  <Alert message="Permisos Insuficientes" type="error"/>
+  <Button style={{justifySelf:"flex-start",alignSelf:"flex-start"}} onClick={() => {
+       history.push("/courses");
+     }}>Regresar</Button>
+     </div>
+  )
 }

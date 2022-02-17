@@ -1,9 +1,11 @@
-import { Table,Typography,Spin } from 'antd';
+import { Table,Typography,Spin,Button } from 'antd';
 import Title from 'antd/lib/skeleton/Title';
 import axios from 'axios';
 import React, { useState, useEffect } from "react";
+import { useHistory } from 'react-router';
 
 export function PageUserList(){
+  const history = useHistory();
     const {Title}=Typography;
     return (
     <div className="pageuserlist">
@@ -11,6 +13,9 @@ export function PageUserList(){
     <div style={{padding:"1rem"}}>
         <UserComponentList/>
     </div>
+    <Button type="secondary" style={{ marginLeft: "5px" }} onClick={()=>{history.push("/setup")}}>
+          Regresar
+        </Button>
 </div>)
 };
 
@@ -81,23 +86,3 @@ const [objectname, setobjectname] = useState([]);
         </div>
     )
 };
-
-
-
-function UserComponent(props) {
-const {name,username,lastname,TaxPayer,email,Password,id} = props;
-    return (
-        <div>
-            <h2>Username: {props.username}</h2>
-            <h3>User Details:</h3>
-            <ul>
-                <li><strong>Name:</strong> {props.name}</li>
-                {/* <li><strong>Last Name:</strong> {props.lastname}</li>
-                <li><strong>TaxPayer:</strong> {props.TaxPayer}</li>
-                <li><strong>E-mail:</strong> {props.email}</li>
-                <li><strong>Password:</strong> {props.Password}</li>
-                <li><strong>User Id:</strong> {props.id}</li> */}
-            </ul>
-        </div>
-    )
-}
