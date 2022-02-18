@@ -29,6 +29,8 @@ export function SetupCourse() {
       dsensibilizacion: values.dsensibilizacion,
       daplicaloaprendido: values.daplicaloaprendido,
       devaluacion: values.devaluacion,
+      acercade:values.acercade,
+      img:values.img,
     };
     //post request to create a course in the api with form values.
     axios
@@ -102,6 +104,14 @@ export function SetupCourse() {
 
       <Form.Item name="description" label="Description" rules={[{required:true,message:"Curso necesita descripción"}]}>
         <Input.TextArea />
+      </Form.Item>
+
+      <Form.Item name="acercade" label="Acerca de" rules={[{required:true,message:"Curso necesita una imagen"}]}>
+        <Input.TextArea />
+      </Form.Item>
+
+      <Form.Item name="img" label="Imagen URL" rules={[{required:true,message:"Curso necesita una imagen"},{type:"url",message:"Ingrese el url de la imgaen"}]}>
+        <Input />
       </Form.Item>
 
       <Form.Item name="dempezar" label="Empezar-Description">
