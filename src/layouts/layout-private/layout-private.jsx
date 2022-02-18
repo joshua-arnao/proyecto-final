@@ -16,6 +16,7 @@ import { PageUser } from "../../pages/user/user";
 import { PageLogin } from "../../pages/login/login";
 import { PageLearnCourse } from "../../pages/learnCourse/learnCourse";
 import {PageUserSetup} from "../../pages/setup/setup";
+import { PageUserEdit } from "../../pages/setup/useredit";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
@@ -23,6 +24,8 @@ import { PageCourseDetail } from "../../pages/courseDetail/course-detail";
 import { PageMenuSetup } from "../../pages/setup/menusetup";
 import { PageUserList } from "../../pages/setup/userlist";
 import { PageSetupCourse } from "../../pages/setup/setupcourse";
+import { PageCourseEdit } from "../../pages/setup/courseedit";
+import { PageCourseList } from "../../pages/setup/courselist";
 
 export function LayoutPrivate() {
   const { Header, Sider, Content } = Layout;
@@ -170,8 +173,29 @@ export function LayoutPrivate() {
                 history.push("/login")
               )}
               {loggedIn ? (
+                <Route path="/setup/useredit">
+                  <PageUserEdit />
+                </Route>
+              ) : (
+                history.push("/login")
+              )}
+              {loggedIn ? (
                 <Route path="/setup/newcourse">
                   <PageSetupCourse />
+                </Route>
+              ) : (
+                history.push("/login")
+              )}
+              {loggedIn ? (
+                <Route path="/setup/courselist">
+                  <PageCourseList />
+                </Route>
+              ) : (
+                history.push("/login")
+              )}
+              {loggedIn ? (
+                <Route path="/setup/editcourse">
+                  <PageCourseEdit />
                 </Route>
               ) : (
                 history.push("/login")

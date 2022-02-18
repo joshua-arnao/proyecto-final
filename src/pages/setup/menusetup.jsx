@@ -34,6 +34,16 @@ function MenuForm() {
           size={"large"}
           style={{marginBottom: "1rem",width:"160px"}}
           onClick={() => {
+            history.push("/setup/useredit");
+          }}
+        >
+          Editar Usuarios
+        </Button>
+        <br />
+        <Button
+          size={"large"}
+          style={{marginBottom: "1rem",width:"160px"}}
+          onClick={() => {
             history.push("/setup/userlist");
           }}
         >
@@ -43,17 +53,34 @@ function MenuForm() {
         <Title level={5}>Cursos:</Title>
         <Button
           size={"large"}
-          style={{width:"160px"}}
+          style={{width:"160px",marginBottom: "1rem"}}
           onClick={() => {
             history.push("/setup/newcourse");
           }}
         >
           Nuevo Curso
         </Button>
+        <br/>
+        <Button
+          size={"large"}
+          style={{width:"160px",marginBottom: "1rem"}}
+          onClick={() => {
+            history.push("/setup/editcourse");
+          }}
+        >
+          Editar Cursos
+        </Button>
+        <br/>
+        <Button
+          size={"large"}
+          style={{width:"160px"}}
+          onClick={() => {
+            history.push("/setup/courselist");
+          }}
+        >
+          Lista de Cursos
+        </Button>
       </div>
-      {/* <div>
-        
-      </div> */}
     </div>
   ) : (
     <div>
