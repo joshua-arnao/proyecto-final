@@ -32,6 +32,7 @@ export function PageCourseDetail() {
           <figure>
             <img
               className="w-full"
+              alt="detalle del curso"
               src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
             />
           </figure>
