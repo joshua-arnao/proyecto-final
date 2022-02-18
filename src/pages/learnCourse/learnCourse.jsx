@@ -127,7 +127,7 @@ export function PageLearnCourse() {
       </Button>
       <Tree
         checkable
-        defaultExpandedKeys={["0-0-0", "0-0-1", "0-0-2", "0-0-3"]}
+        defaultExpandAll
         defaultSelectedKeys={[""]}
         defaultCheckedKeys={[""]}
         onSelect={onSelect}

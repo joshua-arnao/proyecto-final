@@ -1,84 +1,51 @@
-import { Card, Tabs, Button } from "antd";
+import { Card, Tabs, Button, Spin } from "antd";
 import { useHistory } from "react-router";
+import axios from 'axios';
+import { useState, useEffect } from "react";
 const { Meta } = Card;
 const { TabPane } = Tabs;
 
 export function PageStore() {
   const history = useHistory();
-  return (
+
+  const [objectname, setobjectname] = useState([]);
+  const [isValueLoded, setisValueLoaded] = useState(false);
+  useEffect(() => {
+    axios
+      .get(`https://61ef3d44d593d20017dbb3a9.mockapi.io/Cursos`)
+      .then((user) => {
+          console.log(user.data)
+          setobjectname(user.data);
+            setisValueLoaded(true);
+      })
+      .catch((er)=>console.log(er));
+    },[`https://61ef3d44d593d20017dbb3a9.mockapi.io/Cursos`]);
+
+  return !isValueLoded ? (<Spin tip="cargando.."></Spin>) :
+    (
     <div className="flex">
       <div className="card-container">
         <Tabs type="card">
           <TabPane tab="Destacados" key="1">
             <div className="coursesList flex flex-wrap gap-6">
-              <Card
-                style={{ width: 300 }}
-                cover={
-                  <img
-                    alt="example"
-                    src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
-                  />
-                }
-              >
-                <Meta
-                  title="¿Cómo desarrollar una cultura de aprendizaje en remoto?"
-                  description="Aprendiendo a desarrollar una cultura de aprendizaje y mejora continua como equipo en un contexto..."
-                />
-                <div className="grid mt-8">
-                    <Button className="buttonPrimary w-full" type="primary" onClick={()=>{history.push("/course-detail")}}>VER MAS</Button>
+                {objectname.map((courso) =>
+                  <Card
+                    style={{ width: 300 }}
+                    cover={<img alt="cursos" src={courso.img} />}
+                  >
+                    <Meta title={courso.title} description={courso.description} />
+                    <div className="grid mt-8">
+                  <Button
+                    className="buttonPrimary w-full"
+                    type="primary"
+                    onClick={() => {
+                      history.push("/course-detail");
+                    }}
+                  >
+                    VER MAS
+                  </Button>
                 </div>
-              </Card>
-              <Card
-                style={{ width: 300 }}
-                cover={
-                  <img
-                    alt="example"
-                    src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
-                  />
-                }
-              >
-                <Meta
-                  title="¿Cómo desarrollar una cultura de aprendizaje en remoto?"
-                  description="Aprendiendo a desarrollar una cultura de aprendizaje y mejora continua como equipo en un contexto..."
-                />
-                <div className="grid mt-8">
-                    <Button className="buttonPrimary" type="primary" onClick={()=>{history.push("/course-detail")}}>VER MAS</Button>
-                </div>
-              </Card>
-              <Card
-                style={{ width: 300 }}
-                cover={
-                  <img
-                    alt="example"
-                    src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
-                  />
-                }
-              >
-                <Meta
-                  title="¿Cómo desarrollar una cultura de aprendizaje en remoto?"
-                  description="Aprendiendo a desarrollar una cultura de aprendizaje y mejora continua como equipo en un contexto..."
-                />
-                <div className="grid mt-8">
-                    <Button className="buttonPrimary" type="primary" onClick={()=>{history.push("/course-detail")}}>VER MAS</Button>
-                </div>
-              </Card>
-              <Card
-                style={{ width: 300 }}
-                cover={
-                  <img
-                    alt="example"
-                    src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
-                  />
-                }
-              >
-                <Meta
-                  title="¿Cómo desarrollar una cultura de aprendizaje en remoto?"
-                  description="Aprendiendo a desarrollar una cultura de aprendizaje y mejora continua como equipo en un contexto..."
-                />
-                <div className="grid mt-8">
-                    <Button className="buttonPrimary" type="primary" onClick={()=>{history.push("/course-detail")}}>VER MAS</Button>
-                </div>
-              </Card>
+                  </Card>)}
             </div>
           </TabPane>
           <TabPane tab="Innovación" key="2">

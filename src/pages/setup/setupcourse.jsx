@@ -13,7 +13,7 @@ export function PageSetupCourse() {
   );
 }
 
-function SetupCourse() {
+export function SetupCourse() {
   //validación de admin user ID:
   const globaluserID = useSelector((state) => state.userID);
 
