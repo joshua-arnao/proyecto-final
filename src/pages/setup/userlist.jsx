@@ -81,7 +81,8 @@ const [objectname, setobjectname] = useState([]);
         <div>
             <Table
             dataSource={objectname}  
-            columns={columns}          
+            columns={columns}
+            scroll={{ x: 1300, y:400 }}           
             />
         </div>
     )

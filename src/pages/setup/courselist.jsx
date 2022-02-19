@@ -60,7 +60,7 @@ function CourseComponentList(){
         {
             title: 'CourseID',
             dataIndex: 'id',
-            width: '5%',
+            width: '10%',
           },
         {
           title: 'Titulo',
@@ -129,7 +129,8 @@ const [objectname, setobjectname] = useState([]);
         <div>
             <Table
             dataSource={objectname}  
-            columns={columns}          
+            columns={columns}
+            scroll={{ x: 1300,y:350 }}         
             />
         </div>
     )
