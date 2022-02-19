@@ -118,13 +118,13 @@ useEffect(()=>{
     {
         title: 'CourseID',
         dataIndex: 'id',
-        width: '5%',
+        width: '20%',
         editable: false,
       },
     {
       title: 'Titulo',
       dataIndex: 'title',
-      width: '15%',
+      width: '20%',
       editable: true,
     },
     {
@@ -148,30 +148,32 @@ useEffect(()=>{
     {
       title: 'Empezar-Descripcion',
       dataIndex: 'dempezar',
-      width: '20%',
+      width: '30%',
       editable: true,
     },
     {
       title: 'Sensib. Descrip',
       dataIndex: 'dsensibilizacion',
-      width: '20%',
+      width: '30%',
       editable: true,
     },
     {
         title: 'Aplica - Descrip.',
         dataIndex: 'daplicaloaprendido',
-        width: '20%',
+        width: '30%',
         editable: true,
       },
       {
         title: 'Evaluación - Descrip.',
         dataIndex: 'devaluacion',
-        width: '20%',
+        width: '30%',
         editable: true,
       },
     {
       title: 'Acción',
       dataIndex: 'operation',
+      fixed:'right',
+      width: '18%',
       render: (_, record) => {
         const editable = isEditing(record);
         return editable ? (
@@ -226,6 +228,7 @@ useEffect(()=>{
         pagination={{
           onChange: cancel,
         }}
+        scroll={{ x: 1300,y:400 }}
       />
     </Form>
   );

@@ -119,7 +119,7 @@ useEffect(()=>{
     {
         title: 'UserID',
         dataIndex: 'id',
-        width: '5%',
+        width: '15%',
         editable: false,
       },
     {
@@ -161,6 +161,8 @@ useEffect(()=>{
     {
       title: 'Acción',
       dataIndex: 'operation',
+      width: '10%',
+      fixed:'right',
       render: (_, record) => {
         const editable = isEditing(record);
         return editable ? (
@@ -215,6 +217,7 @@ useEffect(()=>{
         pagination={{
           onChange: cancel,
         }}
+        scroll={{ x: 1300,y:400 }}
       />
     </Form>
   );
