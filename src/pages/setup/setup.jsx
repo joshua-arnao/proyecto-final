@@ -13,7 +13,7 @@ export function PageUserSetup() {
   );
 }
 
-function SetupForm() {
+export function SetupForm() {
 
     const globaluserID = useSelector((state) => state.userID);
   const history = useHistory();

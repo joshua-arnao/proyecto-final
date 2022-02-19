@@ -3,33 +3,44 @@ import { useHistory } from "react-router";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
-
 const { Meta } = Card;
 const { TabPane } = Tabs;
 
 export function PageStore() {
   const history = useHistory();
-
   const [objectname, setobjectname] = useState([]);
   const [isValueLoded, setisValueLoaded] = useState(false);
-  useEffect(() => {
+  function getCourses() {
     axios
-      .get(`https://61ef3d44d593d20017dbb3a9.mockapi.io/Cursos`)
-      .then((user) => {
-        console.log(user.data);
-        setobjectname(user.data);
-        setisValueLoaded(true);
-      })
-      .catch((er) => console.log(er));
-  }, [`https://61ef3d44d593d20017dbb3a9.mockapi.io/Cursos`]);
-
-  
-
-  const deleteCourse = (id) => {
-    console.log(id)
-    setobjectname(objectname.filter(user=> user.id !== id));
+    .get(`https://61ef3d44d593d20017dbb3a9.mockapi.io/Cursos`)
+    .then((user) => {
+      console.log(user.data);
+      setobjectname(user.data);
+      setisValueLoaded(true);
+    })
+    .catch((er) => console.log(er));
   }
-
+  useEffect(() => {
+    getCourses()
+  }, []);
+  
+  function removeCourse (id) {
+    fetch (`https://61ef3d44d593d20017dbb3a9.mockapi.io/Cursos/${id}`, {
+      method: 'DELETE'
+    })
+    .then(() => getCourses())
+    .then(() => alert('eliminada'))
+    /* .then(res => res.json())
+    .then(res => {
+      if (res.success) {
+        setobjectname(objectname.filter(user => user.id !== id));
+        isValueLoded({ setobjectname });
+        alert('eliminada');
+      }
+      console.log(setisValueLoaded)
+    }); */
+  }
+  
   return !isValueLoded ? (
     <Spin tip="cargando.."></Spin>
   ) : (
@@ -43,12 +54,14 @@ export function PageStore() {
                   hoverable
                   style={{ width: 300 }}
                   cover={<img alt="cursos" src={courso.img} />}
+                  
                   actions={[
                     <EditOutlined key="edit" />,
                     <DeleteOutlined key="delete"
-                      onClick={() => {
+                    onClick={() => {
                         window.confirm("Estas seguro que deseas eliminar")
-                        deleteCourse(courso.id)
+                        removeCourse(courso.id);                        
+                        console.log("eliminar!!!", courso);
                       }}
                     />
                   ]}
